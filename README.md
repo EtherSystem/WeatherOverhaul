@@ -87,7 +87,8 @@ WeatherOverhaul can also schedule special events as part of the simulated foreca
 
 Aurora and Blood Moon chances are configurable. Blood Moons can optionally require a full moon.
 
-Blood Moons also alter the behavior of certain predators while active: after a fight, you will have 25% less time to recover before the predator can attack you again.
+Blood Moons also alter the behavior of certain predators while active: after a fight, you will have 25% less time to recover before the predator can attack you again.  
+Blood Moons also alter bleeding, basically wildlife cant bleed anymore during a blood moon.
 
 ## Custom Stages Showcase
 
