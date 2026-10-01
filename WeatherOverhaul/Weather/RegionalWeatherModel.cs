@@ -5,28 +5,28 @@ namespace WeatherOverhaul.Weather
     internal static class RegionalWeatherStageWeights
     {
         private static readonly WeightedWeatherFamily[] s_Default = Build(10, 7, 14, 6, 12, 10, 3, 2, 4, 7, 2, 8, 7, 2, 5, 1);
-        private static readonly WeightedWeatherFamily[] s_MysteryLake = Build(15, 10, 14, 8, 12, 8, 3, 2, 3, 5, 1, 9, 6, 4, 0);
-        private static readonly WeightedWeatherFamily[] s_CoastalHighway = Build(17, 12, 14, 8, 8, 5, 2, 1, 4, 2, 0, 12, 9, 4, 2);
-        private static readonly WeightedWeatherFamily[] s_PleasantValley = Build(5, 5, 8, 6, 10, 12, 6, 7, 8, 20, 5, 4, 3, 1, 0);
-        private static readonly WeightedWeatherFamily[] s_DesolationPoint = Build(12, 10, 14, 8, 9, 6, 3, 3, 6, 5, 1, 9, 6, 3, 5);
-        private static readonly WeightedWeatherFamily[] s_TimberwolfMountain = Build(4, 5, 8, 5, 12, 15, 8, 10, 8, 16, 5, 2, 1, 1, 0);
-        private static readonly WeightedWeatherFamily[] s_ForlornMuskeg = Build(4, 4, 7, 6, 8, 5, 3, 5, 5, 3, 1, 16, 20, 13, 0);
-        private static readonly WeightedWeatherFamily[] s_BrokenRailroad = Build(9, 8, 13, 9, 11, 9, 5, 5, 7, 7, 2, 6, 4, 2, 3);
-        private static readonly WeightedWeatherFamily[] s_MountainTown = Build(13, 10, 13, 9, 13, 9, 3, 3, 4, 5, 1, 8, 6, 3, 0);
-        private static readonly WeightedWeatherFamily[] s_HushedRiverValley = Build(6, 6, 10, 6, 12, 11, 6, 7, 7, 9, 2, 8, 6, 4, 0);
-        private static readonly WeightedWeatherFamily[] s_BleakInlet = Build(4, 5, 8, 5, 10, 12, 7, 8, 14, 14, 4, 4, 3, 2, 0);
-        private static readonly WeightedWeatherFamily[] s_AshCanyon = Build(6, 6, 9, 6, 11, 10, 6, 7, 7, 8, 3, 4, 3, 2, 12);
-        private static readonly WeightedWeatherFamily[] s_Blackrock = Build(7, 7, 12, 8, 11, 10, 5, 6, 8, 9, 3, 5, 3, 2, 4);
-        private static readonly WeightedWeatherFamily[] s_TransferPass = Build(12, 10, 14, 9, 12, 9, 4, 4, 5, 5, 1, 7, 5, 3, 0);
-        private static readonly WeightedWeatherFamily[] s_ForsakenAirfield = Build(3, 4, 7, 5, 7, 8, 5, 7, 8, 8, 2, 10, 15, 11, 0);
-        private static readonly WeightedWeatherFamily[] s_ZoneOfContamination = Build(2, 3, 6, 5, 5, 5, 3, 4, 5, 4, 1, 11, 16, 14, 16);
-        private static readonly WeightedWeatherFamily[] s_SunderedPass = Build(2, 3, 5, 4, 9, 14, 8, 10, 13, 21, 6, 2, 2, 1, 0);
-        private static readonly WeightedWeatherFamily[] s_Ravine = Build(12, 6, 14, 8, 14, 7, 2, 2, 4, 3, 1, 15, 8, 4, 0);
-        private static readonly WeightedWeatherFamily[] s_WindingRiver = Build(10, 5, 13, 10, 11, 8, 3, 3, 4, 3, 1, 15, 10, 4, 0);
-        private static readonly WeightedWeatherFamily[] s_CrumblingHighway = Build(13, 7, 17, 11, 11, 6, 2, 2, 4, 3, 1, 12, 6, 2, 3);
-        private static readonly WeightedWeatherFamily[] s_KeepersPassSouth = Build(10, 5, 10, 8, 13, 12, 5, 5, 8, 10, 2, 6, 3, 1, 2);
-        private static readonly WeightedWeatherFamily[] s_KeepersPassNorth = Build(8, 4, 8, 6, 13, 13, 5, 6, 10, 11, 3, 5, 3, 2, 3);
-        private static readonly WeightedWeatherFamily[] s_FarRangeBranchLine = Build(10, 5, 16, 14, 13, 8, 3, 3, 6, 5, 1, 9, 5, 2, 0);
+        private static readonly WeightedWeatherFamily[] s_MysteryLake = Build(15, 10, 14, 8, 12, 8, 3, 2, 3, 5, 1, 9, 6, 4, 0, 1);
+        private static readonly WeightedWeatherFamily[] s_CoastalHighway = Build(17, 12, 14, 8, 8, 5, 2, 1, 4, 2, 0, 12, 9, 4, 2, 1);
+        private static readonly WeightedWeatherFamily[] s_PleasantValley = Build(5, 5, 8, 6, 10, 12, 6, 7, 8, 20, 5, 4, 3, 1, 0, 1);
+        private static readonly WeightedWeatherFamily[] s_DesolationPoint = Build(12, 10, 14, 8, 9, 6, 3, 3, 6, 5, 1, 9, 6, 3, 5, 1);
+        private static readonly WeightedWeatherFamily[] s_TimberwolfMountain = Build(4, 5, 8, 5, 12, 15, 8, 10, 8, 16, 5, 2, 1, 1, 0, 1);
+        private static readonly WeightedWeatherFamily[] s_ForlornMuskeg = Build(4, 4, 7, 6, 8, 5, 3, 5, 5, 3, 1, 16, 20, 13, 0, 2);
+        private static readonly WeightedWeatherFamily[] s_BrokenRailroad = Build(9, 8, 13, 9, 11, 9, 5, 5, 7, 7, 2, 6, 4, 2, 3, 1);
+        private static readonly WeightedWeatherFamily[] s_MountainTown = Build(13, 10, 13, 9, 13, 9, 3, 3, 4, 5, 1, 8, 6, 3, 0, 1);
+        private static readonly WeightedWeatherFamily[] s_HushedRiverValley = Build(6, 6, 10, 6, 12, 11, 6, 7, 7, 9, 2, 8, 6, 4, 0, 1);
+        private static readonly WeightedWeatherFamily[] s_BleakInlet = Build(4, 5, 8, 5, 10, 12, 7, 8, 14, 14, 4, 4, 3, 2, 0, 1);
+        private static readonly WeightedWeatherFamily[] s_AshCanyon = Build(6, 6, 9, 6, 11, 10, 6, 7, 7, 8, 3, 4, 3, 2, 12, 1);
+        private static readonly WeightedWeatherFamily[] s_Blackrock = Build(7, 7, 12, 8, 11, 10, 5, 6, 8, 9, 3, 5, 3, 2, 4, 1);
+        private static readonly WeightedWeatherFamily[] s_TransferPass = Build(12, 10, 14, 9, 12, 9, 4, 4, 5, 5, 1, 7, 5, 3, 0, 1);
+        private static readonly WeightedWeatherFamily[] s_ForsakenAirfield = Build(3, 4, 7, 5, 7, 8, 5, 7, 8, 8, 2, 10, 15, 11, 0, 1);
+        private static readonly WeightedWeatherFamily[] s_ZoneOfContamination = Build(2, 3, 6, 5, 5, 5, 3, 4, 5, 4, 1, 11, 16, 14, 16, 1);
+        private static readonly WeightedWeatherFamily[] s_SunderedPass = Build(2, 3, 5, 4, 9, 14, 8, 10, 13, 21, 6, 2, 2, 1, 0, 1);
+        private static readonly WeightedWeatherFamily[] s_Ravine = Build(12, 6, 14, 8, 14, 7, 2, 2, 4, 3, 1, 15, 8, 4, 0, 1);
+        private static readonly WeightedWeatherFamily[] s_WindingRiver = Build(10, 5, 13, 10, 11, 8, 3, 3, 4, 3, 1, 15, 10, 4, 0, 1);
+        private static readonly WeightedWeatherFamily[] s_CrumblingHighway = Build(13, 7, 17, 11, 11, 6, 2, 2, 4, 3, 1, 12, 6, 2, 3, 1);
+        private static readonly WeightedWeatherFamily[] s_KeepersPassSouth = Build(10, 5, 10, 8, 13, 12, 5, 5, 8, 10, 2, 6, 3, 1, 2, 1);
+        private static readonly WeightedWeatherFamily[] s_KeepersPassNorth = Build(8, 4, 8, 6, 13, 13, 5, 6, 10, 11, 3, 5, 3, 2, 3, 1);
+        private static readonly WeightedWeatherFamily[] s_FarRangeBranchLine = Build(10, 5, 16, 14, 13, 8, 3, 3, 6, 5, 1, 9, 5, 2, 0, 1);
 
         internal static float GetRegionalPreferenceMultiplier(WeatherRegionId regionId, WeatherFamily logicalFamily)
         {
