@@ -444,7 +444,9 @@
 
             int mode = GetModeFromStageId(plan.StageId);
             SynchronizeImmediateForecastPlanLatch(plan, immediate, mode);
-            s_SuppressOutdoorNightEventVisuals = suppressOutdoorVisuals || !CanApplyOutdoorNightEventVisuals(WeatherSnapshot.Capture());
+            WeatherSnapshot visualSnapshot = WeatherSnapshot.Capture();
+            bool suppressForCaller = suppressOutdoorVisuals && !(visualSnapshot.IsIndoorEnvironment && IsBloodMoonVisualMode(mode));
+            s_SuppressOutdoorNightEventVisuals = suppressForCaller || !CanApplyOutdoorNightEventVisuals(visualSnapshot, mode);
             if (s_SuppressOutdoorNightEventVisuals && IsNightEventVisualMode(s_ActiveMode)) SuspendOutdoorNightEventVisualOverrides();
             if (IsNightEventVisualMode(mode) && s_SuppressOutdoorNightEventVisuals) SuspendOutdoorNightEventVisualOverrides();
 
@@ -580,12 +582,13 @@
 
         private static void UpdateOutdoorVisualContext(WeatherSnapshot snapshot)
         {
-            s_SuppressOutdoorNightEventVisuals = !CanApplyOutdoorNightEventVisuals(snapshot);
+            s_SuppressOutdoorNightEventVisuals = !CanApplyOutdoorNightEventVisuals(snapshot, s_ActiveMode);
         }
 
-        private static bool CanApplyOutdoorNightEventVisuals(WeatherSnapshot snapshot)
+        private static bool CanApplyOutdoorNightEventVisuals(WeatherSnapshot snapshot, int mode)
         {
-            if (!snapshot.IsValid || snapshot.IsIndoorEnvironment) return false;
+            if (!snapshot.IsValid) return false;
+            if (snapshot.IsIndoorEnvironment && !IsBloodMoonVisualMode(mode)) return false;
             if (IsSaveBoundarySceneName(snapshot.SceneName) || IsAdditiveWeatherSubsceneName(snapshot.SceneName)) return false;
             if (Time.realtimeSinceStartup < s_OutdoorVisualsNotBeforeRealtime) return false;
             return GameManager.GetUniStorm() != null;
@@ -601,6 +604,11 @@
         private static bool IsNightEventVisualMode(int mode)
         {
             return mode == ModeCloudyAurora || mode == ModeFoggyAurora || mode == ModeSnowyAurora || mode == ModeBloodMoon || mode == ModeLightSnowBloodMoon;
+        }
+
+        private static bool IsBloodMoonVisualMode(int mode)
+        {
+            return mode == ModeBloodMoon || mode == ModeLightSnowBloodMoon;
         }
 
         private static void SuspendOutdoorNightEventVisualOverrides()
@@ -1643,7 +1651,7 @@
             float effectiveIntensity = Math.Max(0.05f, Math.Min(0.45f, BlendSnowIntensity(intensity)));
             Color blendedColor = BlendSnowColor(color);
             if (TrySetSnowPresetBlend(weather, WeatherStage.LightSnow)) BoostFallingSnowParticles(weather.m_FallingSnowParticleSystem, weather.m_FallingSnowParticleSystemRenderer, effectiveIntensity);
-            DisableBlowingSnowEmission(weather, blendedColor);
+            DisableBlowingSnowEmission(weather);
             ApplySnowColor(blendedColor);
         }
 
@@ -1746,7 +1754,7 @@
             }
         }
 
-        private static void DisableBlowingSnowEmission(Il2Cpp.Weather weather, Color color)
+        private static void DisableBlowingSnowEmission(Il2Cpp.Weather weather)
         {
             if (weather == null) return;
 
@@ -1765,7 +1773,6 @@
                 Core.LogExceptionOnce("CustomWeatherStageRuntime.DisableBlowingSnowEmission.1", "CustomWeatherStageRuntime.DisableBlowingSnowEmission failed.", caughtException);
             }
 
-            weather.SetBlowingSnowColor(color);
         }
 
         private static bool TrySetSnowPresetBlend(Il2Cpp.Weather weather, WeatherStage snowPresetStage, bool activateFallingSnowRoot = true)

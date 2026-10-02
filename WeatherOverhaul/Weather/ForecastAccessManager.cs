@@ -738,7 +738,7 @@ namespace WeatherOverhaul.Weather
                     Add(target, WeatherRegionId.DP, WeatherRegionId.CH, WeatherRegionId.CRH, WeatherRegionId.Rav);
                     break;
                 case WeatherRegionId.BRM:
-                    Add(target, WeatherRegionId.BRM, WeatherRegionId.BRM_Prison, WeatherRegionId.TWM, WeatherRegionId.AC, WeatherRegionId.KP_North, WeatherRegionId.KP_South);
+                    Add(target, WeatherRegionId.BRM, WeatherRegionId.TWM, WeatherRegionId.AC, WeatherRegionId.KP_North, WeatherRegionId.KP_South);
                     break;
             }
         }

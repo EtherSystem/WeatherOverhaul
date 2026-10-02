@@ -62,8 +62,8 @@ namespace WeatherOverhaul.Weather
             Register(new WeatherRegionDefinition(WeatherRegionId.PV, "PV", "Pleasant Valley", "RuralRegion", false, WeatherRegionId.CH, WeatherRegionId.WR, WeatherRegionId.KP_South, WeatherRegionId.TWM), "PleasantValley", "Rural");
             Register(new WeatherRegionDefinition(WeatherRegionId.KP_South, "KP-S", "Keeper's Pass South", "CanyonRoadTransitionZone", false, WeatherRegionId.KP_North, WeatherRegionId.PV), "KeepersPassSouth", "KeeperPassSouth", "CanyonRoadTransition", "CanyonRoad");
             Register(new WeatherRegionDefinition(WeatherRegionId.KP_North, "KP-N", "Keeper's Pass North", "BlackrockTransitionZone", false, WeatherRegionId.KP_South, WeatherRegionId.BRM), "KeepersPassNorth", "KeeperPassNorth", "BlackrockTransition");
-            Register(new WeatherRegionDefinition(WeatherRegionId.BRM, "BRM", "Blackrock Mountain", "BlackrockRegion", false, WeatherRegionId.KP_North, WeatherRegionId.TWM, WeatherRegionId.BRM_Prison), "BlackrockMountain", "Blackrock");
-            Register(new WeatherRegionDefinition(WeatherRegionId.BRM_Prison, "BRM-P", "Blackrock Prison", "BlackrockPrisonSurvivalZone", false, WeatherRegionId.BRM), "BlackrockPrison", "Prison");
+            Register(new WeatherRegionDefinition(WeatherRegionId.BRM, "BRM", "Blackrock Mountain", "BlackrockRegion", false, WeatherRegionId.KP_North, WeatherRegionId.TWM), "BlackrockMountain", "Blackrock", "BlackrockPrison", "Prison");
+            RegisterSceneAlias(WeatherRegionId.BRM, "BlackrockPrisonSurvivalZone");
             Register(new WeatherRegionDefinition(WeatherRegionId.TWM, "TWM", "Timberwolf Mountain", "CrashMountainRegion", false, WeatherRegionId.AC, WeatherRegionId.PV, WeatherRegionId.BRM), "TimberwolfMountain", "CrashMountain");
             Register(new WeatherRegionDefinition(WeatherRegionId.AC, "AC", "Ash Canyon", "AshCanyonRegion", false, WeatherRegionId.TWM), "AshCanyon");
         }
@@ -183,6 +183,13 @@ namespace WeatherOverhaul.Weather
             {
                 RegisterAlias(definition.Id, aliases[i]);
             }
+        }
+
+        private static void RegisterSceneAlias(WeatherRegionId id, string sceneName)
+        {
+            if (string.IsNullOrWhiteSpace(sceneName)) return;
+            s_BySceneName[sceneName] = id;
+            RegisterAlias(id, sceneName);
         }
 
         private static void RegisterAlias(WeatherRegionId id, string alias)

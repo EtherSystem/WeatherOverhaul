@@ -1,7 +1,7 @@
 using Il2CppInterop.Runtime.Injection;
 using WeatherOverhaul.UI;
 
-[assembly: MelonInfo(typeof(WeatherOverhaul.Core), "WeatherOverhaul", "1.0.3", "EtherSystem", null)]
+[assembly: MelonInfo(typeof(WeatherOverhaul.Core), "WeatherOverhaul", "1.0.4", "EtherSystem", null)]
 [assembly: MelonGame("Hinterland", "TheLongDark")]
 
 namespace WeatherOverhaul
